@@ -1,0 +1,16 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import csv
+%matplotlib 
+
+def animate(i):
+    data = pd.read_csv('ganoderma.csv')
+    plt.cla()
+    a = data.loc[:13,"Time"].values
+    b = data.loc[:13,"indoor_dry_A0"].values
+    plt.tick_params(axis='x', rotation=45)
+    plt.plot(a, b)
+    plt.tight_layout()
+ani = animation.FuncAnimation(plt.figure(), animate, interval=1000)
+plt.show()
